@@ -1,0 +1,50 @@
+ALTER TABLE Pegawai
+ADD FOREIGN KEY (Atasan) REFERENCES Pegawai(NIP) ON DELETE SET NULL;
+
+ALTER TABLE Pelayanan
+ADD FOREIGN KEY (NIP) REFERENCES Pegawai(NIP) ON DELETE CASCADE;
+ALTER TABLE Pelayanan
+ADD FOREIGN KEY (ID_Peminjaman) REFERENCES Peminjaman(ID_Peminjaman) ON DELETE CASCADE;
+ALTER TABLE Pelayanan
+ADD FOREIGN KEY (NIK) REFERENCES Pelanggan(NIK) ON DELETE CASCADE;
+
+
+ALTER TABLE Detail_Peminjaman
+ADD FOREIGN KEY (ID_Peminjaman) REFERENCES Peminjaman(ID_Peminjaman) ON DELETE CASCADE;
+ALTER TABLE Detail_Peminjaman
+ADD FOREIGN KEY (ID_Kendaraan) REFERENCES Kendaraan(ID_Kendaraan) ON DELETE CASCADE;
+
+ALTER TABLE Mobil
+ADD FOREIGN KEY (ID_Kendaraan) REFERENCES Kendaraan(ID_Kendaraan) ON DELETE CASCADE;
+
+ALTER TABLE Motor
+ADD FOREIGN KEY (ID_Kendaraan) REFERENCES Kendaraan(ID_Kendaraan) ON DELETE CASCADE;
+
+ALTER TABLE Kontak
+ADD FOREIGN KEY (ID_Perusahaan) REFERENCES Perusahaan(ID_Perusahaan) ON DELETE CASCADE;
+
+ALTER TABLE Perusahaan_Perawatan
+ADD FOREIGN KEY (ID_Perusahaan) REFERENCES Perusahaan(ID_Perusahaan) ON DELETE CASCADE;
+
+ALTER TABLE Perusahaan_Asuransi
+ADD FOREIGN KEY (ID_Perusahaan) REFERENCES Perusahaan(ID_Perusahaan) ON DELETE CASCADE;
+
+ALTER TABLE Layanan_Perawatan_Rutin
+ADD FOREIGN KEY (ID_Layanan) REFERENCES Layanan(ID_Layanan) ON DELETE CASCADE;
+ALTER TABLE Layanan_Perawatan_Rutin
+ADD FOREIGN KEY (Perusahaan_Perawatan) REFERENCES Perusahaan_Perawatan(ID_Perusahaan) ON DELETE CASCADE;
+
+ALTER TABLE Layanan_Asuransi
+ADD FOREIGN KEY (ID_Layanan) REFERENCES Layanan(ID_Layanan) ON DELETE CASCADE;
+ALTER TABLE Layanan_Asuransi
+ADD FOREIGN KEY (Perusahaan_Asuransi) REFERENCES Perusahaan_Asuransi(ID_Perusahaan) ON DELETE CASCADE;
+
+ALTER TABLE Perawatan_Rutin
+ADD FOREIGN KEY (ID_Layanan) REFERENCES Layanan_Perawatan_Rutin(ID_Layanan) ON DELETE CASCADE;
+ALTER TABLE Perawatan_Rutin
+ADD FOREIGN KEY (ID_Kendaraan) REFERENCES Kendaraan(ID_Kendaraan) ON DELETE CASCADE;
+
+ALTER TABLE Asuransi
+ADD FOREIGN KEY (ID_Layanan) REFERENCES Layanan_Asuransi(ID_Layanan) ON DELETE CASCADE;
+ALTER TABLE Asuransi
+ADD FOREIGN KEY (ID_Kendaraan) REFERENCES Kendaraan(ID_Kendaraan) ON DELETE CASCADE;
