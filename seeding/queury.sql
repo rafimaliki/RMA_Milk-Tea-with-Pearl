@@ -7,9 +7,9 @@ WITH LayananPerawatanMobilElectric AS (
         NATURAL JOIN Perawatan_Rutin PR
         NATURAL JOIN Layanan_Perawatan_Rutin LPR
     WHERE
-        K.Tipe_Mesin = 'Electric',
-        MONTH(LPR.Tanggal_Perawatan) = 4,
-        YEAR(LPR.Tanggal_Perawatan) = 2024
+        K.Tipe_Mesin = 'Electric' 
+        AND MONTH(LPR.Tanggal_Perawatan) = 4
+        AND YEAR(LPR.Tanggal_Perawatan) = 2024
 )
 SELECT P.Nama, K.Kontak, PP.Spesialisasi, LPME.Tipe_Perawatan
 FROM Perusahaan P
