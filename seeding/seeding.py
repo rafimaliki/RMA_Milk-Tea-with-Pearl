@@ -22,7 +22,8 @@ def exec(SQL):
         for result in cursor.execute(SQL, multi=True):
             if result.with_rows:
                 print("Rows produced by statement '{}':".format(
-                    result.statement))
+                    result.statement[:40]))
+                print(result.fetchwarnings())
                 print(result.fetchall())
             else:
                 print("\n'{}': {}".format(
@@ -79,19 +80,27 @@ def seeding():
             print("Seeding", name)
             exec(func())
 
+def execSQL(filename):
+    with open(filename,'r') as file:
+        SQL = file.read()
+
+    # print(SQL)
+
+    exec(SQL)
+
 def main():
     # Drop all tables
-    dropTables()
+    # dropTables()
 
-    print("\n\nTables Dropped...\n\n")
+    # print("\n\nTables Dropped...\n\n")
 
     # Create the tables
-    createTables()
-    print("\n\nTables Created...\n\n")
+    # createTables()
+    # print("\n\nTables Created...\n\n")
 
     # Create relation
-    createRelations()
-    print("\n\nRelation Created...\n\n")
+    # createRelations()
+    # print("\n\nRelation Created...\n\n")
 
     # Insert the data
     # insertData()
@@ -99,7 +108,8 @@ def main():
     # Seeding
     # seeding()
 
-    print("\n\nSeeding Done...\n\n")
+    # print("\n\nSeeding Done...\n\n")
+    execSQL("rent.sql")
 
 if __name__ == '__main__':
     main()

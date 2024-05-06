@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Detail_Peminjaman (
 CREATE TABLE IF NOT EXISTS Kendaraan (
     ID_Kendaraan INTEGER PRIMARY KEY AUTO_INCREMENT,
     Merek VARCHAR(255) NOT NULL,
-    Plat VARCHAR(10) NOT NULL,
+    Plat VARCHAR(11) NOT NULL,
     Tipe_Mesin ENUM('Electric', 'Non-Electric') NOT NULL
 );
 
