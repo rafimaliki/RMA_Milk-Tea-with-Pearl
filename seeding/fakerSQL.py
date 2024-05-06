@@ -151,7 +151,7 @@ def fake_Kendaraan() -> str:
         e['Tipe_Mesin'] = fake.random_choices(tipe_mesin_choice, length=1)[0]
         res.append(e)
 
-    return INSERT('Kendaraan', ['Plat', 'Merek'], res)
+    return INSERT('Kendaraan', ['Plat', 'Merek', 'Tipe_Mesin'], res)
 
 def fake_Mobil() -> str:
     global id_mobil
@@ -344,7 +344,7 @@ def test():
     # print("\n\nTest fake_Layanan_Asuransi\n")
     # print(fake_Layanan_Asuransi())
     # print("\n\nTest fake_Kendaraan\n")
-    # print(fake_Kendaraan())
+    print(fake_Kendaraan())
     # print("\n\nTest fake_Mobil\n")
     # print(fake_Mobil())
     # print("\n\nTest fake_Motor\n")
@@ -364,24 +364,24 @@ def test():
     # print("\n\nTest fake_Pelayanan\n")
     # print(fake_Pelayanan())
 
-    with open('seeding.sql', 'w') as f:
-        f.write(fake_Perusahaan() + '\n\n')
-        f.write(fake_Kontak() + '\n\n')
-        f.write(fake_Perusahaan_Perawatan() + '\n\n')
-        f.write(fake_Perusahaan_Asuransi() + '\n\n')
-        f.write(fake_Layanan() + '\n\n')
-        f.write(fake_Layanan_Perawatan_Rutin() + '\n\n')
-        f.write(fake_Layanan_Asuransi() + '\n\n')
-        f.write(fake_Kendaraan() + '\n\n')
-        f.write(fake_Mobil() + '\n\n')
-        f.write(fake_Motor() + '\n\n')
-        f.write(fake_Perawatan_Rutin() + '\n\n')
-        f.write(fake_Asuransi() + '\n\n')
-        f.write(fake_Pegawai() + '\n\n')
-        f.write(fake_Pelanggan() + '\n\n')
-        f.write(fake_Peminjaman() + '\n\n')
-        f.write(fake_Detail_Peminjaman() + '\n\n')
-        f.write(fake_Pelayanan() + '\n\n')
+    # with open('seeding.sql', 'w') as f:
+    #     f.write(fake_Perusahaan() + '\n\n')
+    #     f.write(fake_Kontak() + '\n\n')
+    #     f.write(fake_Perusahaan_Perawatan() + '\n\n')
+    #     f.write(fake_Perusahaan_Asuransi() + '\n\n')
+    #     f.write(fake_Layanan() + '\n\n')
+    #     f.write(fake_Layanan_Perawatan_Rutin() + '\n\n')
+    #     f.write(fake_Layanan_Asuransi() + '\n\n')
+    #     f.write(fake_Kendaraan() + '\n\n')
+    #     f.write(fake_Mobil() + '\n\n')
+    #     f.write(fake_Motor() + '\n\n')
+    #     f.write(fake_Perawatan_Rutin() + '\n\n')
+    #     f.write(fake_Asuransi() + '\n\n')
+    #     f.write(fake_Pegawai() + '\n\n')
+    #     f.write(fake_Pelanggan() + '\n\n')
+    #     f.write(fake_Peminjaman() + '\n\n')
+    #     f.write(fake_Detail_Peminjaman() + '\n\n')
+    #     f.write(fake_Pelayanan() + '\n\n')
 
     print("Seeding SQL generated")
 
